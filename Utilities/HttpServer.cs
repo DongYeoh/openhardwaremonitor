@@ -76,9 +76,9 @@ namespace OpenHardwareMonitor.Utilities {
     public Boolean StopHTTPListener() {
       if (PlatformNotSupported)
         return false;
-
       try {
-        listenerThread.Abort();
+        if(listenerThread!=null)
+          listenerThread.Abort();
         listener.Stop();
         listenerThread = null;
       } catch (HttpListenerException) {
